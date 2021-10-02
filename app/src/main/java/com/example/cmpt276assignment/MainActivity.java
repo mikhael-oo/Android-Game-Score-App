@@ -3,6 +3,7 @@ package com.example.cmpt276assignment;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import com.example.cmpt276assignment.model.Game;
 import com.example.cmpt276assignment.model.Game_Manager;
 import com.example.cmpt276assignment.model.player_score;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gameSystem = Game_Manager.getInstance();
+
+        //FAB interaction, opens up the addGamePage activity upon click
+        FloatingActionButton addGameButton = findViewById(R.id.createGameButton);
+        addGameButton.setOnClickListener(view -> {
+            Intent i = addGamePage.makeLaunchIntent(MainActivity.this);
+            startActivity(i);
+        });
 
         createTestInput();
         //renders the contents of the gameManager to the list
