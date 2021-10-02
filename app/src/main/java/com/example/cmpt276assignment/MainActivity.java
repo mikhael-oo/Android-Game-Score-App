@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         gameSystem = Game_Manager.getInstance();
 
         createTestInput();
+        //renders the contents of the gameManager to the list
         renderList();
     }
 
@@ -42,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
             outputList.add(gameSystem.getInfo(x));
         }
 
+        //adapts the information from the list to prepare for display on the device
         ArrayAdapter strListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, outputList);
 
-        targetList = (ListView) findViewById(R.id.listDisplay);
+        //renders the information
+        targetList = (ListView) findViewById(R.id.gameDisplay);
         targetList.setAdapter(strListAdapter);
     }
 

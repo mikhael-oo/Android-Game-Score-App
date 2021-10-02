@@ -17,6 +17,7 @@ public class player_score {
         calculateFinalScore();
     }
 
+    //calculates the score from the current member variables
     private void calculateFinalScore(){
         if(cardSum < 0 || pointSum < 0 || wagerTotal < 0){
             throw new IllegalArgumentException();

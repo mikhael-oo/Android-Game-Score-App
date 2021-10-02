@@ -37,6 +37,7 @@ public class Game {
 
         output.append(" - ");
 
+        //checks for a single or multiple winners, prints a message accordingly
         int winnerIndex = 1;
         boolean fCheck = true;
         for(int x = 0; x < players.size(); x++){
@@ -59,6 +60,7 @@ public class Game {
 
         output.append(": ");
 
+        //prints out the score summarization
         for(int x = 0; x < players.size(); x++){
             output.append(players.get(x).getScore());
             if(x + 1 < players.size()){
@@ -71,6 +73,7 @@ public class Game {
         return output.toString();
     }
 
+    //outputs a custom formatted creation time string
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String getCreationTime(){
         DateTimeFormatter specialFormat = DateTimeFormatter.ofPattern("LLL dd @ hh:mma");
