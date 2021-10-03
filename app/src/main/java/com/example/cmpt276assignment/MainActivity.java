@@ -2,6 +2,7 @@ package com.example.cmpt276assignment;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Build;
@@ -32,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         gameSystem = Game_Manager.getInstance();
+
+        //presets the top toolbar
+        Toolbar mainToolBar = (Toolbar) findViewById(R.id.mainToolbar);
+        setSupportActionBar(mainToolBar);
+        getSupportActionBar().setTitle(R.string.game_view);
 
         //FAB interaction, opens up the addGamePage activity upon click
         FloatingActionButton addGameButton = findViewById(R.id.createGameButton);
