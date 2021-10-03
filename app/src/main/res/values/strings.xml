@@ -3,6 +3,8 @@
     <string name="app_name">cmpt276assignment</string>
     <string name="game_view">Games Played</string>
     <string name="game_add">New Game</string>
+    <string name="edit_page">Edit Game</string>
+    <string name="save_bar">SAVE</string>
 
     <!--other labels-->
     <string name="saveButtonLabel">SAVE</string>

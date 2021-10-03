@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".editGamePage"
+            android:parentActivityName=".MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".addGamePage"
             android:exported="true" />
         <activity
