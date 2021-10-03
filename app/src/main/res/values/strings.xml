@@ -1,3 +1,17 @@
 <resources>
+    <!--page names-->
     <string name="app_name">cmpt276assignment</string>
+    <string name="game_view">Games Played</string>
+    <string name="game_add">New Game</string>
+
+    <!--other labels-->
+    <string name="saveButtonLabel">SAVE</string>
+
+    <string name="firstPlayerLabel">Player 1</string>
+    <string name="secondPlayerLabel">Player 2</string>
+
+    <string name="cardNumberLabel">Number Cards</string>
+    <string name="pointSumLabel">Sum Points</string>
+    <string name="wagerNumLabel">Number Wagers</string>
+    <string name="ScoresLabel">Scores</string>
 </resources>
