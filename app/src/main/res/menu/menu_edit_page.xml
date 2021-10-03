@@ -3,5 +3,5 @@
     <item
         android:id="@+id/save_bar"
         android:title="@string/save_bar"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>

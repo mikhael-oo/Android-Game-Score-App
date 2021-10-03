@@ -21,12 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/ic_white_add_24"
         app:backgroundTint="@color/blue"
         app:fabSize="normal"
         android:tint="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck contentDescription" />
 
 
