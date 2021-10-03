@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -48,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         createTestInput();
         //renders the contents of the gameManager to the list
-        renderList();
+        listview();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void renderList() {
         ArrayList<String> outputList = new ArrayList<>();
-        for(int x = 0; x < gameSystem.currentGameNum(); x++){
+        for (int x = 0; x < gameSystem.currentGameNum(); x++) {
             outputList.add(gameSystem.getInfo(x));
         }
 
@@ -67,26 +68,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void createTestInput(){
+    private void createTestInput() {
         List<player_score> testInputs = new ArrayList<>();
         player_score input = new player_score(25, 40, 3);
         testInputs.add(input);
-        for(int x = 1; x < 2; x++){
+        for (int x = 1; x < 2; x++) {
             input = new player_score(x * 25, x * 40, x + 1);
             testInputs.add(input);
         }
         gameSystem.addGame(testInputs);
         testInputs = new ArrayList<>();
-        for(int x = 0; x < 2; x++){
+        for (int x = 0; x < 2; x++) {
             input = new player_score(x * 10, x * 20, x + 1);
             testInputs.add(input);
         }
         gameSystem.addGame(testInputs);
         testInputs = new ArrayList<>();
-        for(int x = 0; x < 2; x++){
+        for (int x = 0; x < 2; x++) {
             input = new player_score(10, 25, 1);
             testInputs.add(input);
         }
         gameSystem.addGame(testInputs);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void listview() {
+        renderList();
+        targetList.setClickable(true);
+        targetList.setOnItemClickListener(
+                (parent, view, position, id) -> {
+
+                    //String value =(String)lv.getItemAtPosition(position);
+
+                    if (position == 0) {
+                        Intent intent = new Intent(getApplicationContext(), editGamePage.class);
+                        startActivity(intent);
+                    } else {
+                        if (position == 1) {
+                            Intent intent = new Intent(MainActivity.this, editGamePage.class);
+                            startActivity(intent);
+
+                        } else if (position == 2) {
+                            Intent intent = new Intent(MainActivity.this, editGamePage.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
     }
 }

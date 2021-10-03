@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Angelica/AndroidStudioProjects/cmpt276as2/app/src/main/res/layout/activity_edit_game.xml" value="0.4170124481327801" />
+        <entry key="..\:/Users/Angelica/AndroidStudioProjects/cmpt276as2/app/src/main/res/layout/activity_main.xml" value="0.1546875" />
+        <entry key="..\:/Users/Angelica/AndroidStudioProjects/cmpt276as2/app/src/main/res/menu/menu_edit_page.xml" value="0.1546875" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/layout/activity_add_game_page.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
       </map>
