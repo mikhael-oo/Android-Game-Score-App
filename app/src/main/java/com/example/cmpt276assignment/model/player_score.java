@@ -8,67 +8,63 @@ public class player_score {
     private int pointSum;
     private int wagerTotal;
 
-    public player_score(int cardNum, int pointSum, int wagerCount){
+    public player_score(){
 
-        this.cardSum = cardNum;
-        this.pointSum = pointSum;
-        this.wagerTotal = wagerCount;
-
-        calculateFinalScore();
     }
 
-    //calculates the score from the current member variables
-    private void calculateFinalScore(){
-        if(cardSum < 0 || pointSum < 0 || wagerTotal < 0){
+    public player_score(int cardNum, int pointSum, int wagerCount){
+
+        reSetScore(cardNum, pointSum, wagerCount);
+
+        score = getFinalScore(this.cardSum, this.pointSum, this.wagerTotal);
+    }
+
+    public void reSetScore(int newCards, int newPoints, int newWagers){
+        this.cardSum = newCards;
+        this.pointSum = newPoints;
+        this.wagerTotal = newWagers;
+
+        score = getFinalScore(cardSum, pointSum, wagerTotal);
+    }
+
+    public static int getFinalScore(int cards, int points, int wagers){
+        if(cards < 0 || points < 0 || wagers < 0){
             throw new IllegalArgumentException();
         }
 
         //card presence check
-        if(cardSum == 0) {
-            return;
+        if(cards == 0) {
+            return 0;
         }
 
-        score = pointSum;
+        int output = points;
 
         //point deduction
-        score -= 20;
+        output -= 20;
 
         //wager check
-        if(wagerTotal > 0){
-            score *= wagerTotal + 1;
+        if(wagers > 0){
+            output *= wagers + 1;
         }
 
         //cards check and bonus
-        if(cardSum > 7){
-            score += 20;
+        if(cards > 7){
+            output += 20;
         }
+
+        return output;
     }
 
     public int getCardSum() {
         return cardSum;
     }
 
-    public void setCardSum(int cardSum) {
-        this.cardSum = cardSum;
-        calculateFinalScore();
-    }
-
     public int getPointSum() {
         return pointSum;
     }
 
-    public void setPointSum(int pointSum) {
-        this.pointSum = pointSum;
-        calculateFinalScore();
-    }
-
     public int getWagerTotal() {
         return wagerTotal;
-    }
-
-    public void setWagerTotal(int wagerTotal) {
-        this.wagerTotal = wagerTotal;
-        calculateFinalScore();
     }
 
     public int getScore() {
