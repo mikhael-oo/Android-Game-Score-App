@@ -1,12 +1,14 @@
 package com.example.cmpt276assignment;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,12 +58,12 @@ public class addGamePage extends AppCompatActivity {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch (item.getItemId()){
             case R.id.save_bar: //refers to the save button
-                //placeholder for later actual code
-                Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+                saveCheck();
                 return true;
             case android.R.id.home: //refers to the back button
                 finish();
@@ -71,20 +73,9 @@ public class addGamePage extends AppCompatActivity {
         }
     }
 
+    //checks and sets up all the listeners
     private void checkInputs() {
-        ArrayList<ArrayList<EditText>> components = new ArrayList<>();
-
-        ArrayList<EditText> temp = new ArrayList<>();
-        temp.add(findViewById(R.id.editPlayer1Cards));
-        temp.add(findViewById(R.id.editPlayer1Points));
-        temp.add(findViewById(R.id.editPlayer1Wagers));
-        components.add(temp);
-
-        ArrayList<EditText> temp2 = new ArrayList<>();
-        temp2.add(findViewById(R.id.editPlayer2Cards));
-        temp2.add(findViewById(R.id.editPlayer2Points));
-        temp2.add(findViewById(R.id.editPlayer2Wagers));
-        components.add(temp2);
+        ArrayList<ArrayList<EditText>> components = getPageComponents();
 
         for(int x = 0; x < components.size(); x++){
             for(int i = 0; i < components.get(x).size(); i++){
@@ -93,6 +84,7 @@ public class addGamePage extends AppCompatActivity {
         }
     }
 
+    //sets up a listener, listeners update when a focus change is detected
     private void listenerSetups(EditText target, int playerAssociation, ArrayList<ArrayList<EditText>> components){
         target.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -114,6 +106,7 @@ public class addGamePage extends AppCompatActivity {
         });
     }
 
+    //checks if all fields are filled
     private boolean fieldsCheck(int player, ArrayList<ArrayList<EditText>> components){
         for(int x = 0; x < components.get(player).size(); x++){
             if(components.get(player).get(x).getText().toString().equals("")){
@@ -123,6 +116,17 @@ public class addGamePage extends AppCompatActivity {
         return true;
     }
 
+    //checks the column to see if the entire column is cleared
+    private boolean columnCheck(int player, ArrayList<ArrayList<EditText>> components){
+        for(int x = 0; x < components.get(player).size(); x++){
+            if(!components.get(player).get(x).getText().toString().equals("")){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //updates the score for a certain player
     private void scoreUpdate(int player, ArrayList<ArrayList<EditText>> components){
         TextView scoreComponent;
         if(player == 0){
@@ -130,9 +134,69 @@ public class addGamePage extends AppCompatActivity {
         }else{
             scoreComponent = findViewById(R.id.calculationDisplay2);
         }
-        int var1 = Integer.parseInt(components.get(player).get(0).getText().toString());
-        int var2 = Integer.parseInt(components.get(player).get(1).getText().toString());
-        int var3 = Integer.parseInt(components.get(player).get(2).getText().toString());
+        int var1 = getValues(components.get(player).get(0));
+        int var2 = getValues(components.get(player).get(1));
+        int var3 = getValues(components.get(player).get(2));
         scoreComponent.setText(player_score.getFinalScore(var1, var2, var3) + "");
+    }
+
+    //checks if the requirements for creating a game are passed
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void saveCheck(){
+        ArrayList<ArrayList<EditText>> components = getPageComponents();
+
+
+        if(fieldsCheck(0, components)){
+
+            int var1 = getValues(components.get(0).get(0));
+            int var2 = getValues(components.get(0).get(1));
+            int var3 = getValues(components.get(0).get(2));
+            ArrayList<player_score> players = new ArrayList<>();
+            players.add(new player_score(var1, var2, var3));
+
+            if(columnCheck(1, components)){
+                gameSystem.addGame(players);
+                finish();
+                Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(addGamePage.this, "ONLY PLAYER 1", Toast.LENGTH_SHORT).show();
+            }else if(fieldsCheck(1, components)){
+                var1 = getValues(components.get(1).get(0));
+                var2 = getValues(components.get(1).get(1));
+                var3 = getValues(components.get(1).get(2));
+                players.add(new player_score(var1, var2, var3));
+                gameSystem.addGame(players);
+                finish();
+                Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(addGamePage.this, "BOTH PLAYERS", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(addGamePage.this, "Error, please check player 2 inputs", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(addGamePage.this, "Error, please check player 1 inputs", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //gets the text and parses the value into an integer
+    private int getValues(EditText component){
+        return Integer.parseInt(component.getText().toString());
+    }
+
+    //gets all the components on the page and returns it as an array (2d)
+    private ArrayList<ArrayList<EditText>> getPageComponents(){
+        ArrayList<ArrayList<EditText>> components = new ArrayList<>();
+
+        ArrayList<EditText> temp = new ArrayList<>();
+        temp.add(findViewById(R.id.editPlayer1Cards));
+        temp.add(findViewById(R.id.editPlayer1Points));
+        temp.add(findViewById(R.id.editPlayer1Wagers));
+        components.add(temp);
+
+        ArrayList<EditText> temp2 = new ArrayList<>();
+        temp2.add(findViewById(R.id.editPlayer2Cards));
+        temp2.add(findViewById(R.id.editPlayer2Points));
+        temp2.add(findViewById(R.id.editPlayer2Wagers));
+        components.add(temp2);
+
+        return components;
     }
 }
