@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 
 import android.app.GameManager;
 import android.content.Context;
@@ -203,7 +204,7 @@ public class editGamePage extends AppCompatActivity {
 
             if(columnCheck(1, components)){
                 gameManager.setGames(index, players);
-                finish();
+                NavUtils.navigateUpFromSameTask(this);
                 Toast.makeText(this, "Game edited!", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(addGamePage.this, "ONLY PLAYER 1", Toast.LENGTH_SHORT).show();
             }else if(fieldsCheck(1, components)){
@@ -212,7 +213,7 @@ public class editGamePage extends AppCompatActivity {
                 var3 = getValues(components.get(1).get(2));
                 players.add(new player_score(var1, var2, var3));
                 gameManager.setGames(index, players);
-                finish();
+                NavUtils.navigateUpFromSameTask(this);
                 Toast.makeText(this, "Game edited!", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(addGamePage.this, "BOTH PLAYERS", Toast.LENGTH_SHORT).show();
             }else{
