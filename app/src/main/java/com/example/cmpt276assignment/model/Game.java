@@ -79,4 +79,9 @@ public class Game {
         DateTimeFormatter specialFormat = DateTimeFormatter.ofPattern("LLL dd @ hh:mma");
         return creationTime.format(specialFormat);
     }
+
+
+    public player_score getPlayer(int index) {
+        return players.get(index);
+    }
 }

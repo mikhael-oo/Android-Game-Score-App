@@ -4,11 +4,12 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game_Manager {
-    private List<Game> games = new ArrayList<>();
+    private static List<Game> games = new ArrayList<>();
 
     private Game_Manager(){
 

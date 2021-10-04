@@ -99,20 +99,9 @@ public class MainActivity extends AppCompatActivity {
                 (parent, view, position, id) -> {
 
                     //String value =(String)lv.getItemAtPosition(position);
+                    Intent intent = editGamePage.makeIntent(MainActivity.this, position);
+                    startActivity(intent);
 
-                    if (position == 0) {
-                        Intent intent = new Intent(getApplicationContext(), editGamePage.class);
-                        startActivity(intent);
-                    } else {
-                        if (position == 1) {
-                            Intent intent = new Intent(MainActivity.this, editGamePage.class);
-                            startActivity(intent);
-
-                        } else if (position == 2) {
-                            Intent intent = new Intent(MainActivity.this, editGamePage.class);
-                            startActivity(intent);
-                        }
-                    }
                 });
     }
 }
