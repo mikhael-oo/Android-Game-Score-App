@@ -1,25 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".editGamePage">
 
-
     <androidx.appcompat.widget.Toolbar
-
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="672dp"
         android:background="@color/blue"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:popupTheme="@style/Theme.AppCompat.Light"
-        app:title="@string/edit_page"
-        app:titleTextColor="@color/white"
-        tools:layout_editor_absoluteX="0dp" />
+        app:titleTextColor="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/player1Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="60dp"
+        android:layout_toStartOf="@+id/player2Label"
+        android:text="@string/firstPlayerLabel"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/player2Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/secondPlayerLabel"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/cardNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="280dp"
+        android:text="@string/cardNumberLabel"
+        android:textSize="16sp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/PointsSumLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="280dp"
+        android:text="@string/pointSumLabel"
+        android:textColor="@color/blue"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/WagerNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="280dp"
+        android:text="@string/wagerNumLabel"
+        android:textSize="16sp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/ScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="280dp"
+        android:text="@string/ScoresLabel"
+        android:textSize="16sp"
+        android:textColor="@color/blue"/>
+
+    <EditText
+        android:id="@+id/editPlayer2Cards"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player2Label"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textAlignment="center"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/editPlayer1Cards"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player1Label"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/editPlayer2Cards"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/editPlayer2Points"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer2Cards"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="35dp"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textAlignment="center"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/editPlayer1Points"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer1Cards"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/editPlayer2Cards"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textAlignment="center"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/editPlayer2Wagers"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer2Points"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="35dp"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textAlignment="center"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/editPlayer1Wagers"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer1Points"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/editPlayer2Cards"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:textAlignment="center"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/calculationDisplay2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer2Wagers"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="75dp"
+        android:layout_alignParentEnd="true"
+        android:text="@string/calcPlaceholder"
+        android:textSize="16sp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/calculationDisplay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPlayer1Wagers"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="115dp"
+        android:layout_toStartOf="@+id/calculationDisplay2"
+        android:text="@string/calcPlaceholder"
+        android:textSize="16sp"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:id="@+id/displayDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/edit_page" />
+
+</RelativeLayout>
