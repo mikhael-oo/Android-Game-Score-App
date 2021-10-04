@@ -180,26 +180,28 @@
 
     <TextView
         android:id="@+id/calculationDisplay2"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPlayer2Wagers"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="45dp"
         android:layout_alignParentEnd="true"
         android:text="@string/calcPlaceholder"
         android:textSize="16sp"
+        android:textAlignment="center"
         android:textColor="@color/blue"/>
 
     <TextView
         android:id="@+id/calculationDisplay1"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPlayer1Wagers"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="165dp"
         android:layout_alignParentEnd="true"
         android:text="@string/calcPlaceholder"
         android:textSize="16sp"
+        android:textAlignment="center"
         android:textColor="@color/blue"/>
 
 </RelativeLayout>

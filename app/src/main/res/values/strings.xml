@@ -19,4 +19,6 @@
 
     <!--placeholders-->
     <string name="calcPlaceholder">--</string>
+    <string name="emptyStatusMessage">There\'s no games here\n right now...</string>
+    <string name="logoDescription">android icon</string>
 </resources>

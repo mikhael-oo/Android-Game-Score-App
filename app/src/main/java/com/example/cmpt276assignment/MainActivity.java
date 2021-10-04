@@ -7,9 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.cmpt276assignment.model.Game;
 import com.example.cmpt276assignment.model.Game_Manager;
@@ -47,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        emptyRender();
         //renders the contents of the gameManager to the list
-        listview();
+        if(gameSystem.currentGameNum() > 0){
+            listview();
+        }
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -78,5 +85,17 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 });
+    }
+
+    private void emptyRender(){
+        TextView emptyDescrip = (TextView) findViewById(R.id.emptyArrayText);
+        ImageView emptyLogo = (ImageView) findViewById(R.id.emptyLogo);
+        if(gameSystem.currentGameNum() > 0){
+            emptyLogo.setVisibility(View.INVISIBLE);
+            emptyDescrip.setVisibility(View.INVISIBLE);
+        }else{
+            emptyLogo.setVisibility(View.VISIBLE);
+            emptyDescrip.setVisibility(View.VISIBLE);
+        }
     }
 }
