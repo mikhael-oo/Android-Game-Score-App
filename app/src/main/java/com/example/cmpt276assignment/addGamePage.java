@@ -158,7 +158,6 @@ public class addGamePage extends AppCompatActivity {
                 gameSystem.addGame(players);
                 finish();
                 Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(addGamePage.this, "ONLY PLAYER 1", Toast.LENGTH_SHORT).show();
             }else if(fieldsCheck(1, components)){
                 var1 = getValues(components.get(1).get(0));
                 var2 = getValues(components.get(1).get(1));
@@ -167,7 +166,6 @@ public class addGamePage extends AppCompatActivity {
                 gameSystem.addGame(players);
                 finish();
                 Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(addGamePage.this, "BOTH PLAYERS", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(addGamePage.this, "Error, please check player 2 inputs", Toast.LENGTH_SHORT).show();
             }
