@@ -52,4 +52,11 @@ public class Game_Manager {
         games.remove(gameNum);
         //the index should be checked previously to ensure safe values
     }
+
+    //overwrite a game at an index
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void setGames(int index, List<player_score> scores) {
+        Game newGame = new Game(scores);
+        games.set(index, newGame);
+    }
 }

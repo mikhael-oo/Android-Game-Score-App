@@ -202,18 +202,18 @@ public class editGamePage extends AppCompatActivity {
             players.add(new player_score(var1, var2, var3));
 
             if(columnCheck(1, components)){
-                gameManager.addGame(players);
+                gameManager.setGames(index, players);
                 finish();
-                Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Game edited!", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(addGamePage.this, "ONLY PLAYER 1", Toast.LENGTH_SHORT).show();
             }else if(fieldsCheck(1, components)){
                 var1 = getValues(components.get(1).get(0));
                 var2 = getValues(components.get(1).get(1));
                 var3 = getValues(components.get(1).get(2));
                 players.add(new player_score(var1, var2, var3));
-                gameManager.addGame(players);
+                gameManager.setGames(index, players);
                 finish();
-                Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Game edited!", Toast.LENGTH_SHORT).show();
                 //Toast.makeText(addGamePage.this, "BOTH PLAYERS", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(editGamePage.this, "Error, please check player 2 inputs", Toast.LENGTH_SHORT).show();
