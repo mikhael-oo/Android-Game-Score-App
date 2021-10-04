@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -64,9 +65,6 @@ public class addGamePage extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.save_bar: //refers to the save button
                 saveCheck();
-                return true;
-            case android.R.id.home: //refers to the back button
-                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -156,7 +154,7 @@ public class addGamePage extends AppCompatActivity {
 
             if(columnCheck(1, components)){
                 gameSystem.addGame(players);
-                finish();
+                NavUtils.navigateUpFromSameTask(this);
                 Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
             }else if(fieldsCheck(1, components)){
                 var1 = getValues(components.get(1).get(0));
@@ -164,7 +162,7 @@ public class addGamePage extends AppCompatActivity {
                 var3 = getValues(components.get(1).get(2));
                 players.add(new player_score(var1, var2, var3));
                 gameSystem.addGame(players);
-                finish();
+                NavUtils.navigateUpFromSameTask(this);
                 Toast.makeText(this, "Game added!", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(addGamePage.this, "Error, please check player 2 inputs", Toast.LENGTH_SHORT).show();
