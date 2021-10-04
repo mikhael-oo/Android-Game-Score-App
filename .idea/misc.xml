@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19375" />
+        <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/drawable/android_icon_24.xml" value="0.19375" />
+        <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19375" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/drawable/ic_white_add_24.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/layout/activity_add_game_page.xml" value="0.2" />
         <entry key="..\:/Users/jason/AndroidStudioProjects/cmpt276assignment/app/src/main/res/layout/activity_edit_game.xml" value="0.16927083333333334" />
