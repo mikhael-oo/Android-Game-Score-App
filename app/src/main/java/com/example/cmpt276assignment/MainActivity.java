@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        createTestInput();
         //renders the contents of the gameManager to the list
         listview();
     }
@@ -65,30 +64,6 @@ public class MainActivity extends AppCompatActivity {
         //renders the information
         targetList = (ListView) findViewById(R.id.gameDisplay);
         targetList.setAdapter(strListAdapter);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void createTestInput() {
-        List<player_score> testInputs = new ArrayList<>();
-        player_score input = new player_score(25, 40, 3);
-        testInputs.add(input);
-        for (int x = 1; x < 2; x++) {
-            input = new player_score(x * 25, x * 40, x + 1);
-            testInputs.add(input);
-        }
-        gameSystem.addGame(testInputs);
-        testInputs = new ArrayList<>();
-        for (int x = 0; x < 2; x++) {
-            input = new player_score(x * 10, x * 20, x + 1);
-            testInputs.add(input);
-        }
-        gameSystem.addGame(testInputs);
-        testInputs = new ArrayList<>();
-        for (int x = 0; x < 2; x++) {
-            input = new player_score(10, 25, 1);
-            testInputs.add(input);
-        }
-        gameSystem.addGame(testInputs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
