@@ -84,4 +84,8 @@ public class Game {
     public player_score getPlayer(int index) {
         return players.get(index);
     }
+
+    public int size() {
+        return players.size();
+    }
 }

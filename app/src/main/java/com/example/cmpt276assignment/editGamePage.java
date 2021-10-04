@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -48,6 +50,7 @@ public class editGamePage extends AppCompatActivity {
         Game game = gameManager.getGame(x);
         EditText player1card = findViewById(R.id.editPlayer1Cards);
         player1card.setText(Integer.toString(game.getPlayer(0).getCardSum()));
+        //editParam(player1card);
         EditText player1wager = findViewById(R.id.editPlayer1Wagers);
         player1wager.setText(Integer.toString(game.getPlayer(0).getWagerTotal()));
         EditText player1points = findViewById(R.id.editPlayer1Points);
@@ -55,20 +58,40 @@ public class editGamePage extends AppCompatActivity {
         TextView player1total = findViewById(R.id.calculationDisplay1);
         player1total.setText(Integer.toString(game.getPlayer(0).getScore()));
 
-        EditText player2card = findViewById(R.id.editPlayer2Cards);
-        player2card.setText(Integer.toString(game.getPlayer(1).getCardSum()));
-        EditText player2wager = findViewById(R.id.editPlayer2Wagers);
-        player2wager.setText(Integer.toString(game.getPlayer(1).getWagerTotal()));
-        EditText player2points = findViewById(R.id.editPlayer2Points);
-        player2points.setText(Integer.toString(game.getPlayer(1).getPointSum()));
-        TextView player2total = findViewById(R.id.calculationDisplay2);
-        player2total.setText(Integer.toString(game.getPlayer(1).getScore()));
-
+        if (game.size() == 2) {
+            EditText player2card = findViewById(R.id.editPlayer2Cards);
+            player2card.setText(Integer.toString(game.getPlayer(1).getCardSum()));
+            EditText player2wager = findViewById(R.id.editPlayer2Wagers);
+            player2wager.setText(Integer.toString(game.getPlayer(1).getWagerTotal()));
+            EditText player2points = findViewById(R.id.editPlayer2Points);
+            player2points.setText(Integer.toString(game.getPlayer(1).getPointSum()));
+            TextView player2total = findViewById(R.id.calculationDisplay2);
+            player2total.setText(Integer.toString(game.getPlayer(1).getScore()));
+        }
     }
 
     public static Intent makeIntent(Context c, int pos) {
        index = pos;
 
         return new Intent(c, editGamePage.class);
+    }
+
+    public void editParam(EditText et) {
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                et.setText(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 }
