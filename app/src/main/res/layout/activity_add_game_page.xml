@@ -196,8 +196,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editPlayer1Wagers"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="115dp"
-        android:layout_toStartOf="@+id/calculationDisplay2"
+        android:layout_marginEnd="200dp"
+        android:layout_alignParentEnd="true"
         android:text="@string/calcPlaceholder"
         android:textSize="16sp"
         android:textColor="@color/blue"/>
