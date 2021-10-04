@@ -10,9 +10,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cmpt276assignment.model.Game_Manager;
+import com.example.cmpt276assignment.model.player_score;
+
+import java.util.ArrayList;
 
 public class addGamePage extends AppCompatActivity {
 
@@ -38,6 +44,9 @@ public class addGamePage extends AppCompatActivity {
         //allows for a back button to be rendered on the toolbar
         ActionBar AB = getSupportActionBar();
         AB.setDisplayHomeAsUpEnabled(true);
+
+        //checks the inputs provided by the user for game creation
+        checkInputs();
     }
 
     @Override
@@ -60,5 +69,62 @@ public class addGamePage extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void checkInputs() {
+        ArrayList<ArrayList<EditText>> components = new ArrayList<>();
+
+        ArrayList<EditText> temp = new ArrayList<>();
+        temp.add(findViewById(R.id.editPlayer1Cards));
+        temp.add(findViewById(R.id.editPlayer1Points));
+        temp.add(findViewById(R.id.editPlayer1Wagers));
+        components.add(temp);
+
+        ArrayList<EditText> temp2 = new ArrayList<>();
+        temp2.add(findViewById(R.id.editPlayer2Cards));
+        temp2.add(findViewById(R.id.editPlayer2Points));
+        temp2.add(findViewById(R.id.editPlayer2Wagers));
+        components.add(temp2);
+
+        for(int x = 0; x < components.size(); x++){
+            for(int i = 0; i < components.get(x).size(); i++){
+                listenerSetups(components.get(x).get(i), x, components);
+            }
+        }
+    }
+
+    private void listenerSetups(EditText target, int playerAssociation, ArrayList<ArrayList<EditText>> components){
+        target.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(!hasFocus){
+                    if(fieldsCheck(playerAssociation, components)) {
+                        scoreUpdate(playerAssociation, components);
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean fieldsCheck(int player, ArrayList<ArrayList<EditText>> components){
+        for(int x = 0; x < components.get(player).size(); x++){
+            if(components.get(player).get(x).getText().toString().equals("")){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void scoreUpdate(int player, ArrayList<ArrayList<EditText>> components){
+        TextView scoreComponent;
+        if(player == 0){
+            scoreComponent = findViewById(R.id.calculationDisplay1);
+        }else{
+            scoreComponent = findViewById(R.id.calculationDisplay2);
+        }
+        int var1 = Integer.parseInt(components.get(player).get(0).getText().toString());
+        int var2 = Integer.parseInt(components.get(player).get(1).getText().toString());
+        int var3 = Integer.parseInt(components.get(player).get(2).getText().toString());
+        scoreComponent.setText(player_score.getFinalScore(var1, var2, var3) + "");
     }
 }
