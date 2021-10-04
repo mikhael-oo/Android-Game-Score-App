@@ -16,4 +16,7 @@
     <string name="pointSumLabel">Sum Points</string>
     <string name="wagerNumLabel">Number Wagers</string>
     <string name="ScoresLabel">Scores</string>
+
+    <!--placeholders-->
+    <string name="calcPlaceholder">--</string>
 </resources>
