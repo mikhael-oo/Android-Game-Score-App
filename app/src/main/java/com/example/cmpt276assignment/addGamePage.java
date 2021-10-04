@@ -100,6 +100,14 @@ public class addGamePage extends AppCompatActivity {
                 if(!hasFocus){
                     if(fieldsCheck(playerAssociation, components)) {
                         scoreUpdate(playerAssociation, components);
+                    }else{
+                        TextView scoreComponent;
+                        if(playerAssociation == 0){
+                            scoreComponent = findViewById(R.id.calculationDisplay1);
+                        }else{
+                            scoreComponent = findViewById(R.id.calculationDisplay2);
+                        }
+                        scoreComponent.setText(R.string.calcPlaceholder);
                     }
                 }
             }
