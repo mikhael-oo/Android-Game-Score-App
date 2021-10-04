@@ -33,6 +33,7 @@ import java.util.ArrayList;
 public class editGamePage extends AppCompatActivity {
     private Game_Manager gameManager;
     private static int index;
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,10 @@ public class editGamePage extends AppCompatActivity {
 
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        TextView date = findViewById(R.id.displayDate);
+        date.setText(gameManager.getGame(index).getCreationTime());
+
 
         //checks the inputs provided by the user
         checkInputs();
